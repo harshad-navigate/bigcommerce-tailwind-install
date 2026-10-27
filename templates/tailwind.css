@@ -1,0 +1,10 @@
+@import "tailwindcss" prefix(tw);
+
+@source "../templates";
+@source "../assets";
+@source "../templates";
+
+@theme {
+  --color-brand: #2563eb;
+  --font-sans: Arial, Helvetica, sans-serif;
+}
