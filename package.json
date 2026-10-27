@@ -1,15 +1,13 @@
 {
   "name": "bigcommerce-tailwind-install",
   "version": "1.0.0",
+  "description": "Tailwind CSS v4 starter for BigCommerce Stencil / Cornerstone themes",
   "private": true,
-  "description": "Tailwind CSS v4 setup for BigCommerce Stencil themes",
-  "type": "module",
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "setup:fresh": "node scripts/setup.js --fresh"
+  },
   "engines": {
     "node": ">=20"
-  },
-  "scripts": {
-    "setup": "node scripts/setup.mjs",
-    "setup:fresh": "node scripts/setup.mjs --fresh",
-    "help": "node scripts/setup.mjs --help"
   }
 }
