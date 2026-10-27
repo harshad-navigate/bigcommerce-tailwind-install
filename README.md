@@ -53,3 +53,11 @@ Always use `npm run push` (not plain `stencil push`), otherwise `tailwind.css` m
 <button class="px-[20px] py-[10px] rounded-[4px] w-full font-bold">Add To Cart</button>
 ```
 With `--prefix tw`: `class="tw:flex tw:gap-4"`.
+
+git clone https://github.com/harshad-navigate/bigcommerce-tailwind-install.git
+cd bigcommerce-tailwind-install
+npm install
+npm run setup -- --target ../my-theme
+cd ../my-theme
+npm run tailwind:build
+npm run dev
