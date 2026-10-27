@@ -147,3 +147,14 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+node_modules/
+.env
+.DS_Store
+
+# Generated Tailwind output
+assets/css/tailwind.generated.css
+
+# Local Stencil configuration can contain credentials
+config.stencil.json
+
