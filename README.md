@@ -1,72 +1,55 @@
-
 # BigCommerce Tailwind Starter
 
-A reusable Tailwind CSS v4 setup for BigCommerce Stencil /
-Cornerstone themes.
+Tailwind CSS v4 setup for BigCommerce Stencil / Cornerstone themes.
+Requirements: Node 20+, npm, Git, Stencil CLI.
 
-## Requirements
-
-- Node.js 20+
-- npm
-- Git
-- BigCommerce Stencil CLI for local storefront development
-
-## 1. Clone this starter
+## A) Existing theme
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/bigcommerce-tailwind-starter.git
-cd bigcommerce-tailwind-starter
-npm install
-```
-
-## 2. Configure an existing theme
-
-```bash
+git clone https://github.com/harshad-navigate/bigcommerce-tailwind-install.git
+cd bigcommerce-tailwind-install
 npm run setup -- --target ../my-store-theme
 ```
 
-Replace `../my-store-theme` with your existing Stencil
-theme directory.
-
-## 3. Create a fresh Cornerstone theme
+## B) Fresh Cornerstone theme
 
 ```bash
-npm run setup:fresh -- --target ./my-new-theme
+npm run setup:fresh -- --target ../my-new-theme
 ```
 
-This clones the official Cornerstone repository and configures
-Tailwind CSS in the new theme directory.
+## Options
 
-## 4. Build Tailwind CSS
+| Option | Meaning |
+|---|---|
+| `--prefix tw` | Classes need `tw:` prefix (e.g. `tw:flex`). Use this if class names clash with theme CSS |
+| `--no-install` | Skip `npm install` |
+| `--keep-git` | (fresh) keep Cornerstone git history |
+
+Setup is safe to run again. Nothing is duplicated.
+
+## Team members (after theme is pushed to git)
 
 ```bash
-cd ../my-store-theme
-npm run tailwind:build
+git clone <theme-repo-url>
+cd <theme-repo>
+npm install      # tailwind.css is generated automatically
+npm run dev      # tailwind watch + stencil start
 ```
 
-For development, run:
+## Commands (inside the theme)
 
-```bash
-npm run tailwind:watch
-```
+| Command | Use |
+|---|---|
+| `npm run dev` | Tailwind watch + `stencil start` |
+| `npm run tailwind:build` | One-time minified build |
+| `npm run push` | Build Tailwind + `stencil push` |
+| `npm run build` | Tailwind build + theme webpack build |
 
-Keep the watch command running in one terminal. Start the
-Stencil development server in another terminal using the
-commands supported by your theme.
+Always use `npm run push` (not plain `stencil push`), otherwise `tailwind.css` may be missing or old.
 
-## 5. Use Tailwind utilities
+## Usage
 
 ```html
-<div class="tw:flex tw:items-center tw:gap-4">
-  <h2 class="tw:text-xl tw:font-bold">Hello Store</h2>
-</div>
+<button class="px-[20px] py-[10px] rounded-[4px] w-full font-bold">Add To Cart</button>
 ```
-
-## Important
-
-- Tailwind classes use the `tw:` prefix.
-- Keep the existing Cornerstone build system intact.
-- Build Tailwind before previewing or bundling the theme.
-- Do not commit API tokens or store credentials.
-- Test the generated CSS with your actual Stencil theme before
-  publishing.
+With `--prefix tw`: `class="tw:flex tw:gap-4"`.
